@@ -126,4 +126,12 @@ class UserService {
             return stoi(lastOccurence.substr(lastOccurence.find_last_of(':')+1, lastOccurence.length()));
     }
 
+    bool login(string email, string password) {
+        if( (words.find("email:"+email) != string::npos) && ){
+            if(words.find("password:"+password) != string::npos)
+                return true
+        }
+        return false;
+    }
+
 };
