@@ -1,0 +1,31 @@
+Functional Requirements:
+
+The bank management system is a program that keeps track of a person’s bank account. 
+The system allows customers to:
+    * create accounts, 
+    * deposit/withdraw money from their accounts, 
+    * and examine reports for all of their accounts.
+
+Bank Management Expected UI:
+
+1. Sign In or Sign Up:
+
+***************************
+        BANK MIS
+***************************
+
+1. Sign In
+2. Sign Out
+
+2. Sign In
+
+***************************
+        BANK MIS
+***************************
+
+Please Input Your emailAdress
+
+
+How to run:
+g++ -o ../output/main Main.cpp
+./../output/main
