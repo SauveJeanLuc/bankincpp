@@ -136,7 +136,7 @@ class UserService {
         while(inFile >> words) {
             if( (words.find("email:"+email) != string::npos) ){
                 words.erase(words.find("email")-1, words.length());
-                userId = words.substr(words.find(":")+1,words.length());
+                userId = stoi( words.substr(words.find(":")+1,words.length()) );
             }
         }
         User notFoundUser;
@@ -144,7 +144,7 @@ class UserService {
 
         if(userId != 0){
             User user = getUserById(userId);
-            if(user.password == password)
+            if(user.getPassword() == password)
                 return user;
             else
                 return notFoundUser;
