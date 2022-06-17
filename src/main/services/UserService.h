@@ -14,7 +14,7 @@ class UserService {
             cout << "Entered Email already exists" << endl;
         }else{
             user.setId(getLatestUserId() +1);
-            ofstream usersFile("../output/database/database.txt", std::fstream::in | std::fstream::out | std::fstream::app);
+            ofstream usersFile("../output/database/users.txt", std::fstream::in | std::fstream::out | std::fstream::app);
 
             if(!usersFile){
                 cout << "Error creating file" << endl;
@@ -34,10 +34,11 @@ class UserService {
     }
 
     User getUserById(int id){
-        ifstream inFile("../output/database/database.txt");
+        ifstream inFile("../output/database/users.txt");
         string words;
         bool found = false;
         User user;
+        user.setId(-1); // Indicating that user is not found
         int indexCounter = 0;
         while(inFile >> words) {
             if(words.find("user_id:"+to_string(id)) != string::npos){
@@ -76,7 +77,7 @@ class UserService {
     }
 
     bool isUserIdUnique(int id){
-        ifstream inFile("../output/database/database.txt");
+        ifstream inFile("../output/database/users.txt");
         string words;
         int occurenceCounter = 0;
 
@@ -93,7 +94,7 @@ class UserService {
     }
 
     bool isUserEmailUnique(int id, string email){
-        ifstream inFile("../output/database/database.txt");
+        ifstream inFile("../output/database/users.txt");
         string words;
         int occurenceCounter = 0;
 
@@ -110,7 +111,7 @@ class UserService {
     }
 
     int getLatestUserId(){
-        ifstream inFile("../output/database/database.txt");
+        ifstream inFile("../output/database/users.txt");
         string words;
         string lastOccurence = "not_found";
         int occurenceCounter = 0;
@@ -126,12 +127,31 @@ class UserService {
             return stoi(lastOccurence.substr(lastOccurence.find_last_of(':')+1, lastOccurence.length()));
     }
 
-    bool login(string email, string password) {
-        if( (words.find("email:"+email) != string::npos) && ){
-            if(words.find("password:"+password) != string::npos)
-                return true
+    User login(string email, string password) {
+
+        ifstream inFile("../output/database/users.txt");
+        string words;
+        int userId = 0;
+
+        while(inFile >> words) {
+            if( (words.find("email:"+email) != string::npos) ){
+                words.erase(words.find("email")-1, words.length());
+                userId = words.substr(words.find(":")+1,words.length());
+            }
         }
-        return false;
+        User notFoundUser;
+        notFoundUser.setId(-1);
+
+        if(userId != 0){
+            User user = getUserById(userId);
+            if(user.password == password)
+                return user;
+            else
+                return notFoundUser;
+        }else{
+            return notFoundUser;
+        }
+
     }
 
 };
