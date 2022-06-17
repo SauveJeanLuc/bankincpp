@@ -1,6 +1,6 @@
 #include <fstream>
 #include <string>
-#include "../models/Account.h"
+#include "AccountService.h"
 using namespace std;
 
 
@@ -27,8 +27,14 @@ class UserService {
             usersFile << "user_id:"<<user.getId()<<":password:"<<user.getPassword() << endl;
 
             usersFile.close();
+
+            AccountService accountService;
+            accountService.createAccount(user);
+            
             cout << "User Registered Successfully" << endl;
         }
+
+
 
         return user;
     }
