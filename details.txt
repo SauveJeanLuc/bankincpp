@@ -27,5 +27,5 @@ Please Input Your emailAdress
 
 
 How to run:
-g++ -o ../output/main Main.cpp
-./../output/main
+g++ -o ../output/build/main Main.cpp
+./../output/build/main
