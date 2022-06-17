@@ -115,13 +115,8 @@ class UserService {
                 lastOccurence = words;
             }
         }
-        
-        cout << "Last occurence: " << lastOccurence << endl;
-
-        if (occurenceCounter > 0) 
-            return false;
-        else
-            return true;
+    
+        return stoi(lastOccurence.substr(lastOccurence.find_last_of(':')+1, lastOccurence.length()));
     }
 
 };
