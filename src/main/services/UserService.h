@@ -41,7 +41,7 @@ class UserService {
         int indexCounter = 0;
         while(inFile >> words) {
             if(words.find("user_id:"+to_string(id)) != string::npos){
-                found = true
+                found = true;
                 string value = words.substr(words.find_last_of(":")+1, words.length());
 
                 switch(indexCounter){
@@ -112,7 +112,7 @@ class UserService {
     int getLatestUserId(){
         ifstream inFile("../output/database/database.txt");
         string words;
-        string lastOccurence;
+        string lastOccurence = "not_found";
         int occurenceCounter = 0;
 
         while(inFile >> words) {
@@ -120,8 +120,10 @@ class UserService {
                 lastOccurence = words;
             }
         }
-    
-        return stoi(lastOccurence.substr(lastOccurence.find_last_of(':')+1, lastOccurence.length()));
+        if(lastOccurence == "not_found")
+            return 0;
+        else
+            return stoi(lastOccurence.substr(lastOccurence.find_last_of(':')+1, lastOccurence.length()));
     }
 
 };
