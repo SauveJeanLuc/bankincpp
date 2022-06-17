@@ -10,12 +10,10 @@ class UserService {
 
     User registerUser(User user){
 
-        if(isUserIdUnique(user.getId()) != 1){
-            cout << "User with id: " << user.getId() << " Already exists. Can't Be Registered" << endl;
-        }else if(isUserEmailUnique(user.getId(), user.getEmail()) != 1){
+        if(isUserEmailUnique(user.getId(), user.getEmail()) != 1){
             cout << "Entered Email already exists" << endl;
         }else{
-
+            user.setId(getLatestUserId() +1);
             ofstream usersFile("../output/database/database.txt", std::fstream::in | std::fstream::out | std::fstream::app);
 
             if(!usersFile){
@@ -38,10 +36,12 @@ class UserService {
     User getUserById(int id){
         ifstream inFile("../output/database/database.txt");
         string words;
+        bool found = false;
         User user;
         int indexCounter = 0;
         while(inFile >> words) {
-            if(words.find("user_id:"+to_string(id)) != -1){
+            if(words.find("user_id:"+to_string(id)) != string::npos){
+                found = true
                 string value = words.substr(words.find_last_of(":")+1, words.length());
 
                 switch(indexCounter){
@@ -59,11 +59,16 @@ class UserService {
                         break;
                     case 4: 
                         user.setPassword(value);
-                        break;              
+                        break;
+
                 }
 
                 indexCounter ++;
             }
+        }
+
+        if(!found){
+            cout << "User with Id " << id << "Not found" << endl;
         }
 
         inFile.close();
