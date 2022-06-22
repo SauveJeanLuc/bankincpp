@@ -48,7 +48,7 @@ class AccountService {
 
     // }
 
-    // double getAccountBalance(){
-
-    // }
+    double getAccountBalance(){
+        
+    }
 };
