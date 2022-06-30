@@ -14,8 +14,7 @@ class AccountService {
     Account createAccount(User user){
         Account account;
 
-        // account.setId(getLatestAccountId() +1);
-        account.setId(1);
+        account.setId(getLatestAccountId() +1);
 
         ofstream accountsFile("../output/database/accounts.txt", std::fstream::in | std::fstream::out | std::fstream::app);
 
