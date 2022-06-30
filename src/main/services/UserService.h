@@ -10,8 +10,10 @@ class UserService {
 
     User registerUser(User user){
 
-        if(isUserEmailUnique(user.getId(), user.getEmail()) != 1){
+        if(isUserEmailUnique(user.getEmail()) != 1){
             cout << "Entered Email already exists" << endl;
+            user.setId(-1);
+            return user;
         }else{
             user.setId(getLatestUserId() +1);
             ofstream usersFile("../output/database/users.txt", std::fstream::in | std::fstream::out | std::fstream::app);
@@ -31,7 +33,7 @@ class UserService {
             AccountService accountService;
             accountService.createAccount(user);
             
-            cout << "User Registered Successfully" << endl;
+            cout << "Registered Successfully" << endl;
         }
 
 
@@ -99,7 +101,7 @@ class UserService {
             return true;
     }
 
-    bool isUserEmailUnique(int id, string email){
+    bool isUserEmailUnique(string email){
         ifstream inFile("../output/database/users.txt");
         string words;
         int occurenceCounter = 0;
