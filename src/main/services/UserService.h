@@ -1,6 +1,7 @@
 #include <fstream>
 #include <string>
-#include "AccountService.h"
+// #include "../models/User.h"
+// #include "AccountService.h"
 using namespace std;
 
 
@@ -28,8 +29,8 @@ class UserService {
 
             usersFile.close();
 
-            AccountService accountService;
-            accountService.createAccount(user);
+            // AccountService accountService;
+            // accountService.createAccount(user);
             
             cout << "User Registered Successfully" << endl;
         }
@@ -75,7 +76,7 @@ class UserService {
         }
 
         if(!found){
-            cout << "User with Id " << id << "Not found" << endl;
+            cout << "User with Id " << id << " Not found" << endl;
         }
 
         inFile.close();
