@@ -1,7 +1,6 @@
 #include <iostream>
 #include <string>
-// #include "./models/Account.h"
-#include "./services/AccountService.h"
+#include "./services/UserService.h"
 using namespace std;
 
 
@@ -38,6 +37,9 @@ int main( ){
     AccountService accountService;
     Account fetchedAccount = accountService.getAccountById(1);
 
+    UserService userService;
+    User user = userService.getUserById(1);
+    
     cout << " Fetched account's user firstName: " << fetchedAccount.getUser().getFirstName() << endl;
-
+    cout << " Fetched user's user firstName: " << user.getFirstName() << endl;
 }

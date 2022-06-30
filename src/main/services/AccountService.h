@@ -1,13 +1,14 @@
 #include <fstream>
 #include <string>
 #include "../models/Account.h"
-#include "UserService.h"
+// #include "UserService.h"
+#include "../utils/UserUtil.h"
 using namespace std;
 
 class AccountService {
     public: 
 
-    UserService userService;
+    UserUtil userService;
 
     Account createAccount(User user){
         Account account;

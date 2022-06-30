@@ -1,9 +1,8 @@
 #include <fstream>
 #include <string>
 // #include "../models/User.h"
-// #include "AccountService.h"
+#include "AccountService.h"
 using namespace std;
-
 
 class UserService {
 
@@ -29,8 +28,8 @@ class UserService {
 
             usersFile.close();
 
-            // AccountService accountService;
-            // accountService.createAccount(user);
+            AccountService accountService;
+            accountService.createAccount(user);
             
             cout << "User Registered Successfully" << endl;
         }
