@@ -25,6 +25,13 @@ class User {
             password = inputPassword;
         }
 
+        User(string inputFirstName, string inputLastName, string inputEmail, string inputPassword){
+            firstName = inputFirstName;
+            lastName = inputLastName;
+            email = inputEmail;
+            password = inputPassword;
+        }
+
         void setId(int inputId){
             id = inputId;
         }
