@@ -1,3 +1,6 @@
 account_id:1:id:1
 account_id:1:userId:1
-account_id:1:balance:567.000000
+account_id:1:balance:800.000000
+account_id:1:id:1
+account_id:1:userId:2
+account_id:1:balance:0.000000

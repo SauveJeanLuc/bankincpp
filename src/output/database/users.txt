@@ -3,3 +3,8 @@ user_id:1:firstName:SAUVE
 user_id:1:lastName:Jean-Luc
 user_id:1:email:me@gmail.com
 user_id:1:password:12345
+user_id:2:id:2
+user_id:2:firstName:Me
+user_id:2:lastName:ou
+user_id:2:email:e@you
+user_id:2:password:23
