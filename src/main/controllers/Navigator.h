@@ -1,6 +1,8 @@
 #include <iostream>
 #include <string>
 #include "../services/UserService.h"
+#include<ios> //used to get stream size
+#include<limits> //used to get numeric limits
 using namespace std;
 
 
@@ -21,16 +23,16 @@ public:
 
 
         cout << "Enter your firstName: ";
-        cin.ignore();
+        cin.ignore(numeric_limits<streamsize>::max(),'\n');
         getline(cin, firstName);
+
         cout << "Enter your lastName: ";
-        cin.ignore();
         getline(cin, lastName);
+
         cout << "Enter your email: ";
-        cin.ignore();
         getline(cin, email);
+
         cout << "Enter your password: ";
-        cin.ignore();
         getline(cin, password);        
 
         User userTosave(firstName, lastName, email, password);
@@ -52,11 +54,10 @@ public:
         cout << "========================================" << endl;
 
         cout << "Enter your email: ";
-        cin.ignore();
+        cin.ignore(numeric_limits<streamsize>::max(),'\n');
         getline(cin, email);
 
         cout << "Enter your password: ";
-        cin.ignore();
         getline(cin, password);
 
         currentUser = userService.login(email, password);
